@@ -14,5 +14,5 @@ func GetRoutes(engine *gin.Engine) {
 			})
 		})
 	}
-	
+
 }
