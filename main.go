@@ -1,7 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"ownapihub/bootstrap"
+
+	"github.com/gin-gonic/gin"
+)
 
 func main() {
-	fmt.Println("hello world")
+	r := gin.Default()
+	bootstrap.InitRoute(r)
+	r.Run(":3000")
 }
