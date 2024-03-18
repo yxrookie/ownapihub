@@ -1,0 +1,51 @@
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.a
+*.so
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Go binary
+bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Folders
+/.idea/
+/.vscode/
+/vendor/
+/node_modules/
+/.next/
+/dist/
+/build/
+/.pnp/
+.pnp.js
+
+# Local .env files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS specific files
+.DS_Store
+
+# Windows thumbnail cache files
+Thumbs.db
+
+# Compiled Go Files
+*.test
+*.prof
+
+# Log Files
+*.log
+logs/
+
+# Temporary files
+*.tmp
+*.swp
