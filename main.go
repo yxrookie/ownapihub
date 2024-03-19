@@ -3,7 +3,9 @@ package main
 import (
 	"ownapihub/bootstrap"
 	"ownapihub/config"
+	"ownapihub/models/user"
 	"ownapihub/pkg"
+	"ownapihub/pkg/database"
 
 	"github.com/gin-gonic/gin"
 )
@@ -19,7 +21,8 @@ func main() {
 
 	r := gin.Default()
 	bootstrap.InitRoute(r)
-	bootstrap.Initdatabase()
+	database.Db, database.SqlDB = bootstrap.Initdatabase()
+	database.Db.AutoMigrate(&user.User{})
 	
 
 	r.Run(":" + pkg.Get("app.port"))

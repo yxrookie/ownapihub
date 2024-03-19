@@ -1,6 +1,10 @@
 package routes
 
-import "github.com/gin-gonic/gin"
+import (
+	"ownapihub/app/http/controllers/api/v1/auth"
+
+	"github.com/gin-gonic/gin"
+)
 
 // getRoutes will create our routes of our entire application
 // this way every group of routes can be defined in their own file
@@ -8,11 +12,10 @@ import "github.com/gin-gonic/gin"
 func GetRoutes(engine *gin.Engine) {
 	v1 := engine.Group("/v1")
 	{
-		v1.GET("", func(c *gin.Context) {
-			c.JSON(200, gin.H{
-				"new": "life",
-			})
-		})
+		suc := new(auth.SingUp)
+		// 判断手机是否已注册
+		v1.POST("auth/signup/phone/exist", suc.SingUpUsingPhone)
+		
 	}
 
 }
