@@ -3,6 +3,7 @@ module ownapihub
 go 1.21.4
 
 require (
+	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2
 	github.com/gin-gonic/gin v1.9.1
 	github.com/spf13/cast v1.6.0
 	github.com/spf13/viper v1.18.2

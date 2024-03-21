@@ -1,7 +1,9 @@
 package auth
 
 import (
+	"net/http"
 	v1 "ownapihub/app/http/controllers/api/v1"
+	"ownapihub/app/requests"
 	"ownapihub/models/user"
 
 	"github.com/gin-gonic/gin"
@@ -12,18 +14,27 @@ type SingUp struct {
 }
 
 func (s *SingUp) SingUpUsingPhone(c *gin.Context)  {
-	type phoneRequest struct {
-		Phone string `json:"phone"`
-	}
-	request := &phoneRequest{}
 	// partse json request
-	if err := c.ShouldBindJSON(&request); err != nil {
-		c.JSON(400, gin.H{
-			"error": err.Error(),
-		})
+	request, err := requests.ValidateSignUpRequestPhone(c, requests.SignUpRequestPhone{})
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
 	}
 	c.JSON(200, gin.H{
-		"answer": user.CheckUsersWithPhone(request.Phone),
+		"exist": user.CheckUsersWithPhone(request.Phone),
+	})
+	
+}
+
+func (s *SingUp) SingUpUsingEmail(c *gin.Context)  {
+	// partse json request
+	request, err := requests.ValidateSignUpRequestEmail(c, requests.SignUpRequestEmail{})
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	c.JSON(200, gin.H{
+		"exist": user.CheckUsersWithEmail(request.Email),
 	})
 	
 }

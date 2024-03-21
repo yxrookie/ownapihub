@@ -15,7 +15,8 @@ func GetRoutes(engine *gin.Engine) {
 		suc := new(auth.SingUp)
 		// 判断手机是否已注册
 		v1.POST("auth/signup/phone/exist", suc.SingUpUsingPhone)
-		
+		// 判断邮箱是否已注册
+		v1.POST("auth/signup/email/exist", suc.SingUpUsingEmail)	
 	}
 
 }
