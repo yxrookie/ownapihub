@@ -1,8 +1,6 @@
 package requests
 
 import (
-	"fmt"
-
 	"github.com/asaskevich/govalidator"
 	"github.com/gin-gonic/gin"
 )
@@ -36,7 +34,6 @@ func ValidateSignUpRequestPhone(c *gin.Context, request SignUpRequestPhone) (Sig
 	}
 	_, err := govalidator.ValidateStruct(request)
 	if err != nil {
-		fmt.Println("333")
 		return request, err
 	}
 
@@ -52,7 +49,6 @@ func ValidateSignUpRequestEmail(c *gin.Context, request SignUpRequestEmail) (Sig
 	}
 	_, err := govalidator.ValidateStruct(request)
 	if err != nil {
-		fmt.Println("333")
 		return request, err
 	}
 
